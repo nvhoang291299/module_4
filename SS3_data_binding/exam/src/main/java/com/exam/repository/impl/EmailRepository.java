@@ -9,8 +9,10 @@ import java.util.List;
 
 @Repository
 public class EmailRepository implements IEmailRepository {
+    private static Email email1 = new Email(0,"Vietnamese",50, true, "Hello");
     private static List<String> languages = new ArrayList<>();
     private static List<Integer> pageSizes = new ArrayList<>();
+
     static {
         languages.add("English");
         languages.add("Vietnamese");
@@ -35,7 +37,14 @@ public class EmailRepository implements IEmailRepository {
     }
 
     @Override
-    public void update(Email email) {
-
-    }
+    public Email update(Email email) {
+        if (email.getId() == email1.getId()){
+            email1.setId(email.getId());
+            email1.setLanguage(email.getLanguage());
+            email1.setPageSize(email.getPageSize());
+            email1.setSpamsFilter(email.isSpamsFilter());
+            email1.setSignature(email.getSignature());
+        }
+        return email1;
+       }
 }

@@ -1,6 +1,24 @@
 package com.exam.model;
 
 public class Email {
+    private int id;
+
+    public Email(int id, String language, int pageSize, boolean spamsFilter, String signature) {
+        this.id = id;
+        this.language = language;
+        this.pageSize = pageSize;
+        this.spamsFilter = spamsFilter;
+        this.signature = signature;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String language;
     private int pageSize;
     private boolean spamsFilter;

@@ -24,7 +24,7 @@ public class EmailService implements IEmailService {
     }
 
     @Override
-    public void update(Email email) {
-        iEmailRepository.update(email);
+    public Email update(Email email) {
+       return  iEmailRepository.update(email);
     }
 }

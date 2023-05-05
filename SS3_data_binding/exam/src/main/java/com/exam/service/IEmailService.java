@@ -8,5 +8,5 @@ public interface IEmailService {
     List<String> getLanguages();
     List<Integer> getSizes();
 
-    void update(Email email);
+    Email update(Email email);
 }

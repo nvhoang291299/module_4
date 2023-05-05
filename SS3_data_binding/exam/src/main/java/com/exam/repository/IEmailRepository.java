@@ -9,5 +9,5 @@ public interface IEmailRepository {
 
     List<Integer> getSizes();
 
-    void update(Email email);
+    Email update(Email email);
 }
