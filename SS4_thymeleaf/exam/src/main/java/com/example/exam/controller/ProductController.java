@@ -23,15 +23,34 @@ public class ProductController {
         return "/create";
     }
 
-    @GetMapping("/delete(id=${product.getId()})")
+    @GetMapping("/delete")
     public String deleteProduct(@RequestParam(value = "id") int idDel, Model model ){
         productService.delete(idDel);
-//        model.addAttribute("product", );
-        return "/home";
+        return "redirect:/home";
+    }
+    @GetMapping("/view")
+    public String view(@RequestParam(value = "id") int id, Model model){
+        model.addAttribute("product", productService.findById(id));
+        return "/view";
+    }
+    @GetMapping("/edit")
+    public String edit(@RequestParam(value = "id") int id, Model model){
+        model.addAttribute("product", productService.findById(id));
+        return "/update";
+    }
+    @GetMapping("/search{name}")
+    public String search(@PathVariable String name, Model model){
+        model.addAttribute("productList", productService.findByName(name));
+        return"redirect:/home";
     }
     @PostMapping()
     public String save(@ModelAttribute Product product){
         productService.save(product);
         return "redirect:/home";
     };
+    @PostMapping()
+    public String update(@ModelAttribute Product product){
+        productService.update(product);
+        return "redirect:/home";
+    }
 }

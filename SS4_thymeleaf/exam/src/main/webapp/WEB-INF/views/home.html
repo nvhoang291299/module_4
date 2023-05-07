@@ -14,6 +14,10 @@
 <div class="container">
     <h1 class="text-center">List Product</h1>
     <button class="btn btn-primary"><a class="text-white text-decoration-none" th:href="@{/createProduct}">Create</a></button>
+    <form th:action="@{/search}" method="get">
+        <input type="search" name="name" th:text="${name}">
+        <button class="btn btn-primary mx-2" type="submit">Search</button>
+    </form>
     <table class="table table-striped m-2">
         <thead class="bg-primary">
         <tr>
@@ -34,7 +38,7 @@
                 <td th:text="${product.getProducer()}"></td>
                 <td>
                     <button class="btn btn-warning"><a class="text-white text-decoration-none" th:href="@{/edit(id=${product.getId()})}">Edit</a></button>
-                    <button class="btn btn-danger" th:href="@{/home/delete(id=${product.getId()})}">Delete</button>
+                    <a class="btn btn-danger" th:href="@{/delete(id=${product.getId()})}">Delete</a>
                     <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/view(id=${product.getId()})}">View</a></button>
                 </td>
             </tr>
