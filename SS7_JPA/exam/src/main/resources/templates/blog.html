@@ -14,22 +14,28 @@
     <h1 class="text-center">List Blog</h1>
     <button class="btn btn-primary"><a class="text-white text-decoration-none" th:href="@{/create}">Create</a></button>
     <table class="table">
-        <thead class="bg-primary">
+        <thead class="bg-success bg-gradient">
         <tr>
-            <th>#</th>
-            <th>title</th>
-            <th>category</th>
-            <th>content</th>
-            <th>writer</th>
+            <th class="text-white">#</th>
+            <th class="text-white">title</th>
+            <th class="text-white">category</th>
+            <th class="text-white">content</th>
+            <th class="text-white">writer</th>
+            <th></th>
         </tr>
         </thead>
             <tbody>
                 <tr th:each="blog, iterStat: ${blogList}">
                     <td th:text="${blog.getId()}"></td>
                     <td th:text="${blog.getNameBlog()}"></td>
-                    <td th:text="${blog.getCategory()}"></td>
+                    <td th:text="${blog.getCategory().nameCategory}"></td>
                     <td th:text="${blog.getContent()}"></td>
                     <td th:text="${blog.getWriter()}"></td>
+                    <td>
+                        <button class="btn btn-warning"><a class="text-white text-decoration-none" th:href="@{/edit(id=${blog.getId()})}">Edit</a></button>
+                        <a th:attr="onclick=|deleteId(${blog.getId()}, '${blog.getNameBlog()}')|" data-bs-toggle="modal" data-bs-target="#modelId" class="btn btn-danger" th:href="@{/delete(id=${blog.getId()})}">Delete</a>
+                        <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/view(id=${blog.getId()})}">View</a></button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -47,11 +53,9 @@
                 Do you want to <span class="text-danger" id="nameDelete"></span>
             </div>
             <div class="modal-footer">
-                <form action="/home">
+                <form action="/delete">
                     <div class="input-group">
-                        <input id="idDelete" type="hidden"
-                               class="form-control" name="idDel">
-                        <input type="hidden" name="id" value="delete">
+                        <input type="hidden" id="idDelete" name="id">
                     </div>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Delete</button>
