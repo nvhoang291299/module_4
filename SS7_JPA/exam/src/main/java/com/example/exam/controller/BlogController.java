@@ -4,9 +4,15 @@ import com.example.exam.model.Blog;
 import com.example.exam.service.IBlogService;
 import com.example.exam.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+
 
 @Controller
 public class BlogController {
@@ -17,25 +23,26 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public String getAll(Model model){
-        model.addAttribute("blogList", blogService.findAll());
-        return "blog";
+    public String getAll(Model model, Sort sort){
+//        Page<Blog> blogPage = blogService.findAll();
+        model.addAttribute("blogList", blogService.findAll(sort));
+        return "blog/blog";
     }
     @GetMapping("/create")
     public String createBlog(Model model){
         model.addAttribute("blog", new Blog());
         model.addAttribute("categories", categoryService.findAll());
-        return "create";
+        return "blog/create";
     }
 
     @GetMapping("/view")
     public String view(@RequestParam(value = "id") long id, Model model){
         ;
         model.addAttribute("blog", blogService.findById(id).get());
-        return "view";
+        return "blog/view";
     }
     @GetMapping("/delete")
-    public String deleteProduct(@RequestParam(value = "id") long idDel, Model model ){
+    public String deleteBlog(@RequestParam(value = "id") long idDel, Model model ){
         blogService.delete(idDel);
         return "redirect:/blog";
     }
@@ -45,8 +52,14 @@ public class BlogController {
             model.addAttribute("categories", categoryService.findAll());
             model.addAttribute("blog", blogService.findById(id).get());
         }
-        return "/update";
+        return "blog/update";
     }
+
+//    @GetMapping("/search{name}")
+//    public String search(@PathVariable String name, Model model){
+//        model.addAttribute("blogList", blogService.findByNameBlogContaining(name));
+//        return "redirect:/blog";
+//    }
     @PostMapping("/create")
     public String save(@ModelAttribute Blog blog){
         blogService.save(blog);
@@ -55,6 +68,6 @@ public class BlogController {
     @PostMapping("/update")
     public String update(@ModelAttribute("blog") Blog blog){
         blogService.save(blog);
-        return "redirect:/home";
+        return "redirect:/blog";
     }
 }

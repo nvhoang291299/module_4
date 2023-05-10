@@ -1,5 +1,7 @@
 package com.example.exam.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,6 +14,8 @@ public class Blog {
     private String nameBlog;
     private String content;
     private String writer;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date postDate;
 
     @ManyToOne
     @JoinColumn(name = "id_category")
@@ -58,5 +62,13 @@ public class Blog {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public Date getPostDate() {
+        return postDate;
+    }
+
+    public void setPostDate(Date postDate) {
+        this.postDate = postDate;
     }
 }
