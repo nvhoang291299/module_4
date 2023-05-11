@@ -23,9 +23,8 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping("/blog")
-    public String getAll(Model model, Sort sort){
-//        Page<Blog> blogPage = blogService.findAll();
-        model.addAttribute("blogList", blogService.findAll(sort));
+    public String getAll(Model model, @PageableDefault(size = 1) Pageable pageable){
+        model.addAttribute("blogList", blogService.findAll(pageable));
         return "blog/blog";
     }
     @GetMapping("/create")
@@ -55,11 +54,16 @@ public class BlogController {
         return "blog/update";
     }
 
-//    @GetMapping("/search{name}")
-//    public String search(@PathVariable String name, Model model){
-//        model.addAttribute("blogList", blogService.findByNameBlogContaining(name));
-//        return "redirect:/blog";
-//    }
+    @GetMapping("/search{name}")
+    public String search(@PathVariable String name, Model model){
+        model.addAttribute("blogList", blogService.findByNameBlogContaining(name));
+        return "redirect:/blog";
+    }
+    @GetMapping("blog/{postDate}")
+    public String sortByDate(@PathVariable String postDate, Model model){
+        model.addAttribute("blogList", blogService.findByBlogWithSorting(postDate));
+        return "redirect:/blog";
+    }
     @PostMapping("/create")
     public String save(@ModelAttribute Blog blog){
         blogService.save(blog);

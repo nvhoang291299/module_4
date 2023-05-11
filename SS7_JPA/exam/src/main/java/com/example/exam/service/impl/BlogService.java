@@ -24,8 +24,8 @@ public class BlogService implements IBlogService {
     }
 
     @Override
-    public List<Blog> findAll(Sort sort) {
-        return blogRepository.findAll(sort);
+    public Page<Blog> findAll(Pageable pageable) {
+        return blogRepository.findAll(pageable);
     }
 
     @Override
@@ -38,8 +38,14 @@ public class BlogService implements IBlogService {
         blogRepository.deleteById(idDel);
     }
 
-//    @Override
-//    public List<Blog> findByNameBlogContaining(String name) {
-//        return  blogRepository.findByNameBlogContaining(name);
-//    }
+    @Override
+    public List<Blog> findByNameBlogContaining(String name) {
+        return  blogRepository.findByNameBlogContaining(name);
+    }
+
+    @Override
+    public List<Blog> findByBlogWithSorting(String postDate) {
+        return blogRepository.findAll(Sort.by(postDate));
+    }
+
 }

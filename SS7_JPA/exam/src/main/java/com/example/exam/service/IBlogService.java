@@ -11,11 +11,14 @@ import java.util.Optional;
 public interface IBlogService {
     void save(Blog blog);
 
-    List<Blog> findAll(Sort sort);
+    Page<Blog> findAll(Pageable pageable);
 
     Optional<Blog> findById(long id);
 
     void delete(long idDel);
 
-//    List<Blog> findByNameBlogContaining(String name, Sort sort);
+    List<Blog> findByNameBlogContaining(String name);
+
+    List<Blog> findByBlogWithSorting(String postDate);
+
 }

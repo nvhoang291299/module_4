@@ -20,9 +20,9 @@ public interface IBlogRepository extends JpaRepository<Blog, Long> {
     @Override
     void deleteById(Long aLong);
 
-
     @Override
-    List<Blog> findAll(Sort sort);
+    Page<Blog> findAll(Pageable pageable);
 
-//    List<Blog> findByNameBlogContaining(String name);
+    List<Blog> findByNameBlogContaining(String name);
+
 }

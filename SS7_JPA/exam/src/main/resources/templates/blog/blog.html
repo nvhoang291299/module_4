@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport"
@@ -36,7 +36,7 @@
 </nav>
 <div class="container">
     <h1 class="text-center">List Blog</h1>
-    <button class="btn btn-primary my-2"><a class="text-white text-decoration-none" th:href="@{/sort}">Sort by post date</a></button>
+    <button class="btn btn-primary my-2"><a class="text-white text-decoration-none" th:href="@{'/blog'/(${postDate})}">Sort by post date</a></button>
 <!--    <button class="btn btn-primary my-2"><a class="text-white text-decoration-none" th:href="@{/category}">List Category</a></button>-->
     <table class="table table-striped">
         <thead class="bg-success bg-gradient">
@@ -66,15 +66,19 @@
                 </tr>
             </tbody>
         </table>
-<!--    <nav aria-label="Page navigation example">-->
-<!--        <ul class="pagination">-->
-<!--            <li class="page-item"><a class="page-link" th:href="@{'/blog/'(page = ${blogList.number - 1 })}"-->
-<!--                                        th:if="${blogList.hasPrevious()}">Previous</a></li>-->
-<!--            <li class="page-item"><a class="page-link" th:text="${blogList.number + 1 }">1</a></li>-->
-<!--            <li class="page-item"><a class="page-link" th:href="@{'/blog/'(page = ${blogList.number + 1 })}"-->
-<!--                                     th:if="${blogList.hasNext()}">Next</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
+    <div class="pagination">
+        <p>
+            <a class="btn" th:href="@{'/admin/product'(page = ${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">
+                Previous
+            </a>
+            Page <span th:text="${blogList.number + 1 }"></span> of
+            <span th:text="${blogList.totalPages}"></span>
+
+            <a class="btn" th:href="@{'/admin/product/'(page = ${blogList.number + 1})}" th:if="${blogList.hasNext()}">
+                Next
+            </a>
+        </p>
+    </div>
 </div>
 <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
