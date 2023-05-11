@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f3a9d99d-0bd6-47d0-8bb7-3bf8c942744c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/exam/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/ExamApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/model/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/repository/IUserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/service/IUserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/java/com/example/exam/service/impl/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/resources/templates/infoUser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/main/resources/templates/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exam/src/test/java/com/example/exam/ExamApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +25,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -51,6 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1683812690324</updated>
       <workItem from="1683812697049" duration="64000" />
+      <workItem from="1683815084604" duration="594000" />
     </task>
     <servers />
   </component>
