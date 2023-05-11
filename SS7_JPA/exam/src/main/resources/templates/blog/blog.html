@@ -68,13 +68,13 @@
         </table>
     <div class="pagination">
         <p>
-            <a class="btn" th:href="@{'/admin/product'(page = ${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">
+            <a class="btn" th:href="@{'/blog'(page = ${blogList.number - 1})}" th:if="${blogList.hasPrevious()}">
                 Previous
             </a>
             Page <span th:text="${blogList.number + 1 }"></span> of
             <span th:text="${blogList.totalPages}"></span>
 
-            <a class="btn" th:href="@{'/admin/product/'(page = ${blogList.number + 1})}" th:if="${blogList.hasNext()}">
+            <a class="btn" th:href="@{'/blog'(page = ${blogList.number + 1})}" th:if="${blogList.hasNext()}">
                 Next
             </a>
         </p>
