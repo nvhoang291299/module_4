@@ -7,7 +7,11 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 
@@ -28,8 +32,7 @@ public class UserDTO implements Validator {
     @Email
     private String email;
     @NotNull
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
 
     public UserDTO() {
     }
@@ -65,11 +68,11 @@ public class UserDTO implements Validator {
         this.email = email;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -81,13 +84,20 @@ public class UserDTO implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserDTO user = (UserDTO) target;
-        int dateBirth = user.getDateOfBirth().getYear();
+        LocalDate dateBirth = null;
         LocalDate now = LocalDate.now();
         int dateNow = now.getYear();
-        int age = dateNow - dateBirth;
-        ValidationUtils.rejectIfEmpty(errors, "dateBirth", "dateBirth.empty");
-        if (age < 18) {
-            errors.rejectValue("dateOfBirth", "dateOfBirth","age less than 18 years old");
+        try {
+            dateBirth = LocalDate.parse(user.dateOfBirth);
+            Period age = Period.between(dateBirth, now);
+            if (age.getYears() < 18) {
+                errors.rejectValue("dateOfBirth", "dateOfBirth","age less than 18 years old");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+
+
+
     }
 }

@@ -13,18 +13,16 @@ import javax.validation.constraints.Pattern;
 public class MusicDTO implements Validator {
     private long id;
     @NotEmpty
-    @NotNull
     @Max(value= 800)
     @Pattern(regexp = "^[a-z A-Z]+$")
     private String song;
     @NotEmpty
-    @NotNull
-    @Max(value= 800)
-    @Pattern(regexp ="^[a-z A-Z]+$")
+    @Max(value= 300)
+    @Pattern(regexp = "^[a-z A-Z]+$")
     private String artist;
     @NotEmpty
-    @NotNull
-    @Pattern(regexp ="^[a-z A-Z]+$")
+    @Max(value= 1000)
+    @Pattern(regexp = "^[a-zA-Z,]+$")
     private String category;
 
     public MusicDTO() {
