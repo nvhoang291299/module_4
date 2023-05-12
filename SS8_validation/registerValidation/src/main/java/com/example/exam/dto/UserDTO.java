@@ -32,6 +32,8 @@ public class UserDTO implements Validator {
     @Email
     private String email;
     @NotNull
+
+
     private String dateOfBirth;
 
     public UserDTO() {
