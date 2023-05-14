@@ -1,4 +1,7 @@
 package com.example.applicationborrowbooks.repository;
 
-public interface IOrderRepository {
+import com.example.applicationborrowbooks.model.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IOrderRepository extends JpaRepository<Order, Long> {
 }

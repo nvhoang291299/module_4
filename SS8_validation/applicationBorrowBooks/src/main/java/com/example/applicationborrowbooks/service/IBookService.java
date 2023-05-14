@@ -9,4 +9,8 @@ public interface IBookService {
     List<Book> findAll();
 
     Optional<Book> findById(long id);
+
+    void save(Book book);
+
+    void borrow(Book book);
 }

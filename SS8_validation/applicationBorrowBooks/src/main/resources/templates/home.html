@@ -11,6 +11,7 @@
 </head>
 <body>
 <div class="container">
+    <button class="btn btn-primary my-2"><a class="text-white text-decoration-none" th:href="@{/give_book_back}">pay</a></button>
     <table class="table table-striped">
         <thead class="bg-success bg-gradient">
         <tr>
@@ -26,7 +27,7 @@
             <td th:text="${book.getBook()}"></td>
             <td th:text="${book.getCount()}"></td>
             <td>
-                <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/view(id=${book.getId()})}">View</a></button>
+                <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/borrow(id=${book.getId()})}">Order</a></button>
             </td>
         </tr>
         </tbody>
