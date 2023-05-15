@@ -1,21 +1,23 @@
 package com.example.applicationborrowbooks.aop;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 ;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class Log {
-    @AfterThrowing(value = "execution(* com.example.applicationborrowbooks.controller.BookController.borrowBook())")
-    public void checkErrors(){
-        System.out.println("bạn không thể mượn sách");
+    @AfterReturning(pointcut = "execution(* com.example.applicationborrowbooks.controller.BookController.borrow())")
+    public void logBorrow(){
+        System.out.println("đã hết sách");
     }
-    @After(value = "execution(* com.example.applicationborrowbooks.controller.BookController.borrowBook())")
-    public void logDone(){
-        System.out.println("bạn đã mượn thành công");
+    @AfterThrowing(pointcut = "execution(* com.example.applicationborrowbooks.controller.BookController.borrow())")
+    public void logPay(){
+        System.out.println("sách được thay đổi");
+    }
+
+    @Around(pointcut = "execution(* com.example.applicationborrowbooks.controller.BookController.*Book())")
+    public void logState(){
+        System.out.println("Có thay đổi");
     }
 }

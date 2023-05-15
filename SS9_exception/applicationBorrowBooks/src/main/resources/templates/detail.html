@@ -18,7 +18,7 @@
 <div class="container">
 
   <div class="w-300 ">
-    <form th:action="@{/borrowBook}" th:object="${book}" method="post">
+    <form th:action="@{/borrowBook}" th:object="${book}">
       <input th:type="hidden" name="id" th:field="*{id}">
       <div class="form-group" >
         <label>Book:</label>
@@ -30,9 +30,9 @@
       </div>
       <div class="form-group">
         <label>Code Order:</label>
-        <input type="text" class="form-control" readonly>
+        <input type="text" class="form-control" th:value="${book.getCode()}" th:field="*{code}" readonly>
       </div>
-      <button class="btn btn-primary">Order book</button>
+      <button class="btn btn-primary" type="submit">Borrow book</button>
     </form>
   </div>
 </div>

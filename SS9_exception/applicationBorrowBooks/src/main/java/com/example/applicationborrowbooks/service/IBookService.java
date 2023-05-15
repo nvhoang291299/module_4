@@ -8,9 +8,11 @@ import java.util.Optional;
 public interface IBookService {
     List<Book> findAll();
 
-    Optional<Book> findById(long id);
+    Book findById(long id);
 
     void save(Book book);
 
     void borrow(Book book);
+
+    void pay(Book book);
 }

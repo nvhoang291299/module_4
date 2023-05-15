@@ -11,14 +11,7 @@ public class Book {
     private long id;
     private String book;
     private int count;
-
-    @ManyToMany
-    @JoinTable(
-            name = "book_order",
-            joinColumns = @JoinColumn(name = "book_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
-    )
-    private List<Order> orders;
+    private int code;
 
     public Book() {
     }
@@ -47,11 +40,11 @@ public class Book {
         this.count = count;
     }
 
-    public List<Order> getOrders() {
-        return orders;
+    public int getCode() {
+        return code;
     }
 
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void setCode(int code) {
+        this.code = code;
     }
 }

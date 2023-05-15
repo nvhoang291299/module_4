@@ -27,7 +27,8 @@
             <td th:text="${book.getBook()}"></td>
             <td th:text="${book.getCount()}"></td>
             <td>
-                <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/borrow(id=${book.getId()})}">Order</a></button>
+                <button class="btn btn-secondary"><a class="text-white text-decoration-none" th:href="@{/detail(id=${book.getId()})}">Detail</a></button>
+                <button class="btn btn-success"><a class="text-white text-decoration-none" th:href="@{/pay(id=${book.getId()})}">Pay Book</a></button>
             </td>
         </tr>
         </tbody>

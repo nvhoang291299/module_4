@@ -25,8 +25,8 @@ public class BookService implements IBookService {
     }
 
     @Override
-    public Optional<Book> findById(long id) {
-        return bookRepository.findById(id);
+    public Book findById(long id) {
+        return bookRepository.findById(id).get();
     }
 
     @Override
@@ -36,13 +36,14 @@ public class BookService implements IBookService {
 
     @Override
     public void borrow(Book book) {
-        Order order = new Order();
-        long code = (long) (Math.random()*(99999 - 10000)*10000);
-        order.setCode(code);
         book.setCount(book.getCount()-1);
-        book.getOrders().add(order);
         bookRepository.save(book);
-        orderRepository.save(order);
+    }
+
+    @Override
+    public void pay(Book book) {
+        book.setCount(book.getCount()+1);
+        bookRepository.save(book);
     }
 
 }
