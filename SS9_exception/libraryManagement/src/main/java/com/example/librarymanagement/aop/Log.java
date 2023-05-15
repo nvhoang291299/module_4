@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class Log {
     private int count = 0;
-//    @After(pointcut = "execution(* com.example.)")
+    @After("execution(* com.example.librarymanagement.controller.BookController.*())")
     public void methodAfter(JoinPoint joinPoint){
         count++;
-        System.err.println(joinPoint.getSignature().getName()+" the number of visitors to the library: "+ count);
+        System.err.println(joinPoint.getSignature().getName()+"Số người vào thư viện: "+ count);
     }
     @AfterReturning(pointcut = "execution(* com.example.librarymanagement.controller.BookController.borrow())")
     public void logBorrow(){
@@ -22,6 +22,7 @@ public class Log {
     public void logPay(){
         System.out.println("sách được thay đổi");
     }
+
 
 
 }

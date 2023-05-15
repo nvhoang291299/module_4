@@ -53,8 +53,14 @@ public class BookController {
     }
     @GetMapping("/payBook")
     public String payBook(@RequestParam(name = "code") long code) throws ExceptionBackBook {
-        Book book = orderService.getBook(code);
-        bookService.pay(book);
+        Book book = null;
+        try{
+            book = orderService.getBook(code);
+            bookService.pay(book);
+        }
+        catch (Exception e){
+            throw new ExceptionBackBook();
+        }
             return "redirect:/home";
     }
 }
