@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fae3cb32-8136-44b3-b564-298c065c99f5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/model/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/model/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/repository/ICartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/repository/ICartRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/repository/IFoodRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/repository/IFoodRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/ICartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/ICartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/IFoodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/IFoodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/impl/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/impl/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/impl/FoodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/java/com/example/cartapplication/service/impl/FoodService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/resources/templates/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/resources/templates/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cartApplication/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/cartApplication/src/main/resources/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/dto/MovieDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/dto/MovieDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/model/Movie.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/model/Movie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/repository/IMovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/repository/IMovieRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/service/impl/IMovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/service/impl/IMovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/java/com/example/test/service/impl/MovieService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/java/com/example/test/service/impl/MovieService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/resources/templates/create.html" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/resources/templates/create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test/src/main/resources/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/../test/src/main/resources/templates/home.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="2PpmI78qGXHCf64eh6AJc1gKPAN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fae3cb32-8136-44b3-b564-298c065c99f5" name="Changes" comment="" />
+      <created>1684162321561</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1684162321561</updated>
+      <workItem from="1684162325312" duration="44000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-$END$
+  <div class="container">
+      <table class="table table-striped">
+          <thead class="bg-dark">
+          <tr>
+              <th class="text-white">#</th>
+              <th class="text-white">name food</th>
+              <th class="text-white">type food</th>
+              <th class="text-white">image</th>
+              <th class="text-white">quantity</th>
+              <th class="text-white">price</th>
+          </tr>
+          </thead>
+          <tbody>
+          <th:block th:each="food, i: ${cart.foods}">
+              <tr>
+                  <td th:text="${i.index + 1}"></td>
+                  <td th:text="${food.getKey().getNameFood()}"></td>
+                  <td th:text="${food.getKey().getTypeFood()}"></td>
+                  <td><img th:src="${food.getKey().getImage()}" width="10%" alt=""></td>
+                  <td>
+                      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                          <a id="decrease_button" th:text="${'-'}" class="btn" th:href="@{/cart/__${food.getKey().getIdFood()}__(action='increment')}"></a>
+                          <input type="text" class="btn-check" id="btncheck2" autocomplete="off" th:text="${food.getValue()}">
+                          <a id="increase_button" th:href="@{/addCart/__${food.getKey().getIdFood()}__(action='increment')}"
+                             th:text="${'+'}" class="btn"></a>
+                      </div>
+                  </td>
+                  <td th:text="${food.getKey().getNewPrice()}"></td>
+              </tr>
+          </th:block>
+          </tbody>
+      </table>
+
+      <div class="total">Total: <span th:text="${cart.countTotalPayment()}"></span></div>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
