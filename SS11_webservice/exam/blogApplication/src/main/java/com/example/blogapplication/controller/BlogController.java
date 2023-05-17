@@ -43,33 +43,33 @@ public class BlogController {
         return new ResponseEntity<>(listSearch, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Blog> create(@RequestBody Blog blog){
-        Blog blog1 = blogService.save(blog);
-        return new ResponseEntity<>(blog1, HttpStatus.OK);
-    }
-
-    @PatchMapping("/edit")
-    public ResponseEntity<Blog> edit(@RequestParam(value = "id") long id, @RequestParam(value = "content") String content){
-        Blog blog1 = blogService.findById(id);
-        blog1.setContent(content);
-        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<Blog> update(@RequestParam(value = "id") long id, @RequestBody Blog blog){
-        Blog blog1 = blogService.findById(id);
-        blog1.setNameBlog(blog.getNameBlog());
-        blog1.setContent(blog.getContent());
-        blog1.setWriter(blog.getWriter());
-        blog1.setPostDate(blog.getPostDate());
-        blog1.getCategory().setNameCategory(blog.getCategory().getNameCategory());
-        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/delete")
-    public ResponseEntity<Blog> delete(@RequestParam(value = "id") long id){
-        blogService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
+//    @PostMapping("/create")
+//    public ResponseEntity<Blog> create(@RequestBody Blog blog){
+//        Blog blog1 = blogService.save(blog);
+//        return new ResponseEntity<>(blog1, HttpStatus.OK);
+//    }
+//
+//    @PatchMapping("/edit")
+//    public ResponseEntity<Blog> edit(@RequestParam(value = "id") long id, @RequestParam(value = "content") String content){
+//        Blog blog1 = blogService.findById(id);
+//        blog1.setContent(content);
+//        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
+//    }
+//
+//    @PutMapping("/update")
+//    public ResponseEntity<Blog> update(@RequestParam(value = "id") long id, @RequestBody Blog blog){
+//        Blog blog1 = blogService.findById(id);
+//        blog1.setNameBlog(blog.getNameBlog());
+//        blog1.setContent(blog.getContent());
+//        blog1.setWriter(blog.getWriter());
+//        blog1.setPostDate(blog.getPostDate());
+//        blog1.getCategory().setNameCategory(blog.getCategory().getNameCategory());
+//        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
+//    }
+//
+//    @DeleteMapping("/delete")
+//    public ResponseEntity<Blog> delete(@RequestParam(value = "id") long id){
+//        blogService.deleteById(id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
 }
