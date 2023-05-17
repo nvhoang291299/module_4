@@ -1,4 +1,4 @@
-package com.example.exam.model;
+package com.example.blogapplication.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

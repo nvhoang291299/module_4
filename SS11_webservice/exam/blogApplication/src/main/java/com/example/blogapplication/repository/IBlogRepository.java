@@ -1,28 +1,12 @@
-package com.example.exam.repository;
+package com.example.blogapplication.repository;
 
-import com.example.exam.model.Blog;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import com.example.blogapplication.model.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IBlogRepository extends JpaRepository<Blog, Long> {
-
-    @Override
-    <S extends Blog> S save(S blog);
-
-    @Override
-    Optional<Blog> findById(Long id);
-
-    @Override
-    void deleteById(Long aLong);
-
-    @Override
-    Page<Blog> findAll(Pageable pageable);
-
-    List<Blog> findByNameBlogContaining(String name);
-
+    @Query(value = "select b.* from blogs b join categorys c on b.id_category = c.id where name_category = ?1", nativeQuery = true)
+    List<Blog> findBlogsByCategory(String category);
 }

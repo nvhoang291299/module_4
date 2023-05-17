@@ -1,9 +1,9 @@
-package com.example.exam.service.impl;
+package com.example.blogapplication.service.impl;
 
-import com.example.exam.model.Blog;
-import com.example.exam.model.Category;
-import com.example.exam.repository.ICategoryRepository;
-import com.example.exam.service.ICategoryService;
+import com.example.blogapplication.model.Blog;
+import com.example.blogapplication.model.Category;
+import com.example.blogapplication.repository.ICategoryRepository;
+import com.example.blogapplication.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,22 +16,7 @@ public class CategoryService implements ICategoryService {
     private ICategoryRepository categoryRepository;
 
     @Override
-    public void save(Category category) {
-        categoryRepository.save(category);
-    }
-
-    @Override
     public List<Category> findAll() {
         return categoryRepository.findAll();
-    }
-
-    @Override
-    public Optional<Category> findById(long id) {
-        return categoryRepository.findById(id);
-    }
-
-    @Override
-    public void delete(long idDel) {
-        categoryRepository.deleteById(idDel);
     }
 }

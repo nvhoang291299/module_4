@@ -1,6 +1,7 @@
-package com.example.exam.service;
+package com.example.blogapplication.service;
 
-import com.example.exam.model.Blog;
+import com.example.blogapplication.model.Blog;
+import com.example.blogapplication.model.Category;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -9,16 +10,14 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IBlogService {
-    void save(Blog blog);
 
-    Page<Blog> findAll(Pageable pageable);
+    List<Blog> findAll();
 
-    Optional<Blog> findById(long id);
+    Blog findById(long id);
 
-    void delete(long idDel);
+    List<Blog> findByCategory(String category);
 
-    List<Blog> findByNameBlogContaining(String name);
+    Blog save(Blog blog);
 
-    List<Blog> findByBlogWithSorting(String postDate);
-
+    void deleteById(long id);
 }

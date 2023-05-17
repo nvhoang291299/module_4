@@ -1,4 +1,6 @@
-package com.example.exam.model;
+package com.example.blogapplication.model;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,9 +11,11 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String nameCategory;
 
     @OneToMany(mappedBy = "category")
+    @JsonBackReference
     private List<Blog> blogList;
 
 

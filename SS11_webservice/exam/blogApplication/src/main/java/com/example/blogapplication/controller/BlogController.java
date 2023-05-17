@@ -1,77 +1,75 @@
-package com.example.exam.controller;
+package com.example.blogapplication.controller;
 
-import com.example.exam.model.Blog;
-import com.example.exam.service.IBlogService;
-import com.example.exam.service.ICategoryService;
+import com.example.blogapplication.model.Blog;
+import com.example.blogapplication.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
-@Controller
+@RestController
+@RequestMapping("/blog")
 public class BlogController {
     @Autowired
     private IBlogService blogService;
 
-    @Autowired
-    private ICategoryService categoryService;
-
-    @GetMapping("/blog")
-    public String getAll(Model model, @PageableDefault(size = 1) Pageable pageable){
-        model.addAttribute("blogList", blogService.findAll(pageable));
-        return "blog/blog";
-    }
-    @GetMapping("/create")
-    public String createBlog(Model model){
-        model.addAttribute("blog", new Blog());
-        model.addAttribute("categories", categoryService.findAll());
-        return "blog/create";
+    @GetMapping
+    public ResponseEntity<List<Blog>> getAll(){
+        List<Blog> blogs = blogService.findAll();
+        if (blogs.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(blogs, HttpStatus.OK);
     }
 
     @GetMapping("/view")
-    public String view(@RequestParam(value = "id") long id, Model model){
-        ;
-        model.addAttribute("blog", blogService.findById(id).get());
-        return "blog/view";
-    }
-    @GetMapping("/delete")
-    public String deleteBlog(@RequestParam(value = "id") long idDel, Model model ){
-        blogService.delete(idDel);
-        return "redirect:/blog";
-    }
-    @GetMapping("/edit")
-    public String edit(@RequestParam(value = "id") int id, Model model){
-        if (blogService.findById(id).isPresent()) {
-            model.addAttribute("categories", categoryService.findAll());
-            model.addAttribute("blog", blogService.findById(id).get());
+    public ResponseEntity<Blog> view(@RequestParam(value = "id") long id){
+        Blog blog = blogService.findById(id);
+        if (blog == null) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return "blog/update";
+        return new ResponseEntity<>(blog, HttpStatus.OK);
     }
 
-    @GetMapping("/search{name}")
-    public String search(@PathVariable String name, Model model){
-        model.addAttribute("blogList", blogService.findByNameBlogContaining(name));
-        return "redirect:/blog";
+    @GetMapping("/search")
+    public ResponseEntity<List<Blog>> searchByCategory(@RequestParam(value = "category") String category){
+        List<Blog> listSearch = blogService.findByCategory(category);
+        if (listSearch.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(listSearch, HttpStatus.OK);
     }
-    @GetMapping("blog/{postDate}")
-    public String sortByDate(@PathVariable String postDate, Model model){
-        model.addAttribute("blogList", blogService.findByBlogWithSorting(postDate));
-        return "redirect:/blog";
-    }
+
     @PostMapping("/create")
-    public String save(@ModelAttribute Blog blog){
-        blogService.save(blog);
-        return "redirect:/blog";
+    public ResponseEntity<Blog> create(@RequestBody Blog blog){
+        Blog blog1 = blogService.save(blog);
+        return new ResponseEntity<>(blog1, HttpStatus.OK);
     }
-    @PostMapping("/update")
-    public String update(@ModelAttribute("blog") Blog blog){
-        blogService.save(blog);
-        return "redirect:/blog";
+
+    @PatchMapping("/edit")
+    public ResponseEntity<Blog> edit(@RequestParam(value = "id") long id, @RequestParam(value = "content") String content){
+        Blog blog1 = blogService.findById(id);
+        blog1.setContent(content);
+        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Blog> update(@RequestParam(value = "id") long id, @RequestBody Blog blog){
+        Blog blog1 = blogService.findById(id);
+        blog1.setNameBlog(blog.getNameBlog());
+        blog1.setContent(blog.getContent());
+        blog1.setWriter(blog.getWriter());
+        blog1.setPostDate(blog.getPostDate());
+        blog1.getCategory().setNameCategory(blog.getCategory().getNameCategory());
+        return new ResponseEntity<>(blogService.save(blog1), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Blog> delete(@RequestParam(value = "id") long id){
+        blogService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

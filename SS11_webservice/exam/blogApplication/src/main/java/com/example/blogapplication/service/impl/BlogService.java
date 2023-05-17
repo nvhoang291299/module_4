@@ -1,8 +1,9 @@
-package com.example.exam.service.impl;
+package com.example.blogapplication.service.impl;
 
-import com.example.exam.model.Blog;
-import com.example.exam.repository.IBlogRepository;
-import com.example.exam.service.IBlogService;
+import com.example.blogapplication.model.Blog;
+import com.example.blogapplication.model.Category;
+import com.example.blogapplication.repository.IBlogRepository;
+import com.example.blogapplication.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,35 +18,29 @@ public class BlogService implements IBlogService {
     @Autowired
     private IBlogRepository blogRepository;
 
-
     @Override
-    public void save(Blog blog) {
-        blogRepository.save(blog);
+    public List<Blog> findAll() {
+        return blogRepository.findAll();
     }
 
     @Override
-    public Page<Blog> findAll(Pageable pageable) {
-        return blogRepository.findAll(pageable);
+    public Blog findById(long id) {
+        return blogRepository.findById(id).get();
     }
 
     @Override
-    public Optional<Blog> findById(long id) {
-        return blogRepository.findById(id);
+    public List<Blog> findByCategory(String category) {
+        return blogRepository.findBlogsByCategory(category);
     }
 
     @Override
-    public void delete(long idDel) {
-        blogRepository.deleteById(idDel);
+    public Blog save(Blog blog) {
+        return blogRepository.save(blog);
     }
 
     @Override
-    public List<Blog> findByNameBlogContaining(String name) {
-        return  blogRepository.findByNameBlogContaining(name);
-    }
-
-    @Override
-    public List<Blog> findByBlogWithSorting(String postDate) {
-        return blogRepository.findAll(Sort.by(postDate));
+    public void deleteById(long id) {
+        blogRepository.deleteById(id);
     }
 
 }
