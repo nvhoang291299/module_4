@@ -78,7 +78,6 @@ public class Cart {
 
     public void removeFood(Food food) {
         Map.Entry<Food, Integer> itemEntry = selectItemInCart(food);
-        assert itemEntry != null;
         this.foods.remove(itemEntry.getKey());
     }
 }
