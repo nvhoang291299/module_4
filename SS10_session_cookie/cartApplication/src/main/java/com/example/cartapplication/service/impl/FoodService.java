@@ -13,6 +13,7 @@ import java.util.Optional;
 public class FoodService implements IFoodService {
     @Autowired
     private IFoodRepository foodRepository;
+
     @Override
     public List<Food> findAll() {
         return foodRepository.findAll();

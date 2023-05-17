@@ -25,24 +25,24 @@
           <tbody>
           <th:block th:each="food, i: ${cart.foods}">
               <tr>
+                  <td><a th:href="@{/delete/__${food.getKey().idFood}__(action='show')}" th:text="${'x'}"></a></td>
                   <td th:text="${i.index + 1}"></td>
-                  <td th:text="${food.getKey().getNameFood()}"></td>
-                  <td th:text="${food.getKey().getTypeFood()}"></td>
-                  <td><img th:src="${food.getKey().getImage()}" width="10%" alt=""></td>
+                  <td th:text="${food.getKey().nameFood}"></td>
+                  <td th:text="${food.getKey().typeFood}"></td>
+                  <td><img th:src="${food.getKey().image}" width="10%" alt=""></td>
                   <td>
                       <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                          <a id="decrease_button" th:text="${'-'}" class="btn" th:href="@{/cart/__${food.getKey().getIdFood()}__(action='increment')}"></a>
+                          <a id="decrease_button" th:text="${'-'}" class="btn" th:href="@{/downCart/__${food.getKey().idFood}__(action='show')}"></a>
                           <input type="text" class="btn-check" id="btncheck2" autocomplete="off" th:text="${food.getValue()}">
-                          <a id="increase_button" th:href="@{/addCart/__${food.getKey().getIdFood()}__(action='increment')}"
+                          <a id="increase_button" th:href="@{/addCart/__${food.getKey().idFood}__(action='show')}"
                              th:text="${'+'}" class="btn"></a>
                       </div>
                   </td>
-                  <td th:text="${food.getKey().getNewPrice()}"></td>
+                  <td th:text="${food.getKey().newPrice}"></td>
               </tr>
           </th:block>
           </tbody>
       </table>
-
       <div class="total">Total: <span th:text="${cart.countTotalPayment()}"></span></div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

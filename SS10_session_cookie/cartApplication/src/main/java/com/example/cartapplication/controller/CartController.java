@@ -14,6 +14,7 @@ import java.util.Optional;
 public class CartController {
     @Autowired
     private IFoodService foodService;
+
     @ModelAttribute("cart")
     public Cart setupCart(){
         return new Cart();

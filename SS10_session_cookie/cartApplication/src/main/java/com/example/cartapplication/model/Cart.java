@@ -46,6 +46,16 @@ public class Cart {
         }
     }
 
+    public void downProduct(Food food){
+        if (!checkItemInCart(food)){
+            foods.put(food,1);
+        } else {
+            Map.Entry<Food, Integer> itemEntry = selectItemInCart(food);
+            Integer newQuantity = itemEntry.getValue() - 1;
+            foods.replace(itemEntry.getKey(),newQuantity);
+        }
+    }
+
     public Integer countProductQuantity(){
         Integer productQuantity = 0;
         for (Map.Entry<Food, Integer> entry : foods.entrySet()) {
@@ -64,5 +74,11 @@ public class Cart {
             payment += entry.getKey().getNewPrice() * (float) entry.getValue();
         }
         return payment;
+    }
+
+    public void removeFood(Food food) {
+        Map.Entry<Food, Integer> itemEntry = selectItemInCart(food);
+        assert itemEntry != null;
+        this.foods.remove(itemEntry.getKey());
     }
 }

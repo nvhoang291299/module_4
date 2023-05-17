@@ -21,18 +21,55 @@ public class HomeController {
     public Cart setupCart() {
         return new Cart();
     }
+
     @GetMapping("")
     public String home(Model model){
         model.addAttribute("foods", foodService.findAll());
         return "home";
     }
 
-    @GetMapping("/addCart/{id}")
-    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart) {
-        Optional<Food> productOptional = foodService.findById(id);
-            cart.addProduct(productOptional.get());
-            return "redirect:/";
+    @GetMapping("/detail")
+    public String detail(@RequestParam long id, Model model){
+        model.addAttribute("food", foodService.findById(id).get());
+        return "detail";
     }
 
+    @GetMapping("/addCart/{id}")
+    public String addToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action) {
+        Optional<Food> foodOptional = foodService.findById(id);
+        if (!foodOptional.isPresent()){
+            return "error404";
+        }
+        if (action.equals("show")){
+            cart.addProduct(foodOptional.get());
+            return "redirect:/cart";
+        }
+        cart.addProduct(foodOptional.get());
+        return "redirect:/";
+    }
 
+    @GetMapping("/downCart/{id}")
+    public String downToCart(@PathVariable Long id, @ModelAttribute Cart cart, @RequestParam("action") String action){
+        Optional<Food> foodOptional = foodService.findById(id);
+        if (!foodOptional.isPresent()){
+            return "error404";
+        }
+        if (action.equals("show")){
+            cart.downProduct(foodOptional.get());
+            return "redirect:/cart";
+        }
+        cart.downProduct(foodOptional.get());
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteCart(@PathVariable long id, @ModelAttribute Cart cart, @RequestParam("action") String action){
+        Optional<Food> foodOptional = foodService.findById(id);
+        if (action.equals("show")){
+            cart.removeFood(foodOptional.get());
+            return "redirect:/cart";
+        }
+        cart.removeFood(foodOptional.get());
+        return "redirect:/shop";
+    }
 }
