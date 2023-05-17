@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -71,5 +72,13 @@ public class HomeController {
         }
         cart.removeFood(foodOptional.get());
         return "redirect:/shop";
+    }
+
+    @GetMapping("/payment")
+    public ModelAndView payment(@SessionAttribute Cart cart){
+        cart.getFoods().clear();
+        ModelAndView modelAndView = new ModelAndView("cart");
+        modelAndView.addObject("message", "thanh tóan thành công");
+        return modelAndView;
     }
 }

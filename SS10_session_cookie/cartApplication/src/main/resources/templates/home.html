@@ -31,7 +31,6 @@
                     <p class="card-text" th:text="${food.typeFood}"></p>
                     <p class="card-text fw-bolder fs-2 text" th:text="${food.newPrice}"></p>
                     <a th:href="@{/addCart/__${food.idFood}__(action='show')}" class="btn btn-success ">Add cart</a>
-                    <a th:href="@{/detail(id=${food.idFood})}" class="btn btn-secondary ">Detail</a>
                 </div>
             </div>
         </div>

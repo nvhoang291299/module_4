@@ -80,4 +80,8 @@ public class Cart {
         Map.Entry<Food, Integer> itemEntry = selectItemInCart(food);
         this.foods.remove(itemEntry.getKey());
     }
+
+    public void getProductMap(){
+
+    }
 }
